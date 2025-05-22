@@ -5,9 +5,9 @@ import uuid
 import random
 import json
 
-event_status: list = ["SUCCESS", "ERROR", "STANDBY"] + [None]
-device_id: list = ['D' + str(_id).rjust(3, '0') for _id in range(1, 6)] + [None]
-customer_id: list = ["CI" + str(_id).rjust(5, '0') for _id in range(100, 121)]
+event_status = ["SUCCESS", "ERROR", "STANDBY", None]
+device_id = ['D' + str(_id).rjust(3, '0') for _id in range(1, 6)] + [None]
+customer_id = ["CI" + str(_id).rjust(5, '0') for _id in range(100, 121)]
 
 
 # Generate event data from devices

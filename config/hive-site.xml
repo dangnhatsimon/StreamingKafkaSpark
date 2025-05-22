@@ -11,7 +11,7 @@
    </property>
    <property>
       <name>hive.metastore.warehouse.dir</name>
-      <value>/opt/spark/warehouse/</value>
+      <value>/opt/spark/spark-warehouse/</value>
       <description>location of default database for the warehouse</description>
    </property>
 </configuration>

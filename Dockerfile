@@ -67,7 +67,9 @@ FROM pyspark AS pyspark-runner
 #RUN curl https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-spark-runtime-3.5_2.12/1.9.0/iceberg-spark-runtime-3.5_2.12-1.9.0.jar -Lo /opt/spark/jars/iceberg-spark-runtime-3.5_2.12-1.9.0.jar
 
 # Download delta jars
-RUN curl https://repo1.maven.org/maven2/io/delta/delta-spark_2.12/3.3.1/delta-spark_2.12-3.3.1.jar -Lo /opt/spark/jars/delta-spark_2.12-3.3.1.jar
+RUN curl https://repo1.maven.org/maven2/io/delta/delta-spark_2.12/3.3.1/delta-spark_2.12-3.3.1.jar -Lo /opt/spark/jars/delta-spark_2.12-3.3.1.jar \
+    && curl https://repo1.maven.org/maven2/io/delta/delta-core_2.12/2.4.0/delta-core_2.12-2.4.0.jar -Lo /opt/spark/jars/delta-core_2.12-2.4.0.jar \
+    && curl https://repo1.maven.org/maven2/io/delta/delta-storage/3.3.1/delta-storage-3.3.1.jar -Lo /opt/spark/jars/delta-storage-3.3.1.jar
 
 ## Download hudi jars
 #RUN curl https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark3-bundle_2.12/0.15.0/hudi-spark3-bundle_2.12-0.15.0.jar -Lo /opt/spark/jars/hudi-spark3-bundle_2.12-0.15.0.jar
@@ -76,6 +78,9 @@ RUN curl https://repo1.maven.org/maven2/io/delta/delta-spark_2.12/3.3.1/delta-sp
 #RUN curl https://repo1.maven.org/maven2/org/apache/derby/derby/10.17.1.0/derby-10.17.1.0.jar -Lo /opt/spark/jars/derby-10.17.1.0.jar \
 #    && curl https://repo1.maven.org/maven2/org/apache/hive/hive-exec/4.0.1/hive-exec-4.0.1.jar -Lo /opt/spark/jars/hive-exec-4.0.1.jar \
 #    && curl https://repo1.maven.org/maven2/org/apache/hive/hive-metastore/4.0.1/hive-metastore-4.0.1.jar -Lo /opt/spark/jars/hive-metastore-4.0.1.jar
+
+## Download postgresql jdbc driver
+RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.5/postgresql-42.7.5.jar -Lo /opt/spark/jars/postgresql-42.7.5.jar
 
 # Download S3 jars
 RUN curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.4/hadoop-aws-3.3.4.jar -Lo /opt/spark/jars/hadoop-aws-3.3.4.jar \
@@ -87,6 +92,9 @@ RUN curl https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.
 
 # Download metadata platform OpenLineage jars
 RUN curl https://repo1.maven.org/maven2/io/openlineage/openlineage-spark_2.12/1.32.0/openlineage-spark_2.12-1.32.0.jar -Lo /opt/spark/jars/openlineage-spark_2.12-1.32.0.jar
+
+# Download Azure Cosmos DB for Spark
+RUN curl https://repo1.maven.org/maven2/com/azure/cosmos/spark/azure-cosmos-spark_3-1_2-12/4.37.1/azure-cosmos-spark_3-1_2-12-4.37.1.jar -Lo /opt/spark/jars/azure-cosmos-spark_3-1_2-12-4.37.1.jar
 
 COPY entrypoint.sh .
 RUN chmod u+x /opt/spark/entrypoint.sh
